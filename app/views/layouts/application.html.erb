@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src='http://www.google.com/jsapi'></script> 
+  <title>Quant</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="container">
+		<h1>Company Name: <%= Company.find(1).name%></h1>
+		<p>This is lead data for <%= Company.find(1).name %>'s product: <%=@product.name%></p>
+		<p><%=@product.name%> is described as: <%=@product.description%> </p>
+		<p><%=@product.name%> is placed in the category: <%=@product.category%> </p>
+		<p> Revenue is based on <%=@product.name%> priced at: <%= number_to_currency @product.price%> </p>
+
+		<%= yield %>
+	</div>
+</body>
+</html>
