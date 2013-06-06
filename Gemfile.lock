@@ -49,6 +49,8 @@ GEM
       multi_json (~> 1.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    foreigner (1.4.1)
+      activerecord (>= 3.0.0)
     google_charts (1.2.0)
       actionpack (>= 3.x)
     google_visualr (2.1.7)
@@ -122,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   faker
+  foreigner
   google_charts
   google_visualr (>= 2.1)
   jquery-datatables-rails!

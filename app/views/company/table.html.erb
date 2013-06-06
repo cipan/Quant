@@ -20,11 +20,9 @@
 	      <td><%= lead.total %></td>
 	      <td><%= lead.success %></td>
 	      <td><%= (lead.success/lead.total*100).round(1) %></td> 
-	    </tr>
+	 
 		<% sum += (lead.success/lead.total*100).round(1).to_i %>	
 	  <% end %>
 	</tbody>
 </table>
-
-<p><br>  The average lead generation was <%= sum/(Lead.all.length) %> % </br></p>
 
