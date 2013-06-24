@@ -1,7 +1,12 @@
 Quant::Application.routes.draw do
-  get "company/table"
 
-  get "company/graph"
+  get "lead/graph"
+
+  get "lead/page"
+  
+  match "affiliate/:affiliate/table" => "affiliate#table"
+
+  # match "company/:company/table" => "company#table"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,41 +11,61 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531213726) do
+ActiveRecord::Schema.define(:version => 20130622050214) do
 
-  create_table "clients", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email_address"
-    t.string   "phone"
-    t.integer  "highest_level_of_education"
-    t.string   "enroll"
-    t.integer  "company_id"
-    t.integer  "lead_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
-  add_index "clients", ["lead_id"], :name => "index_clients_on_lead_id"
-
-  create_table "companies", :force => true do |t|
-    t.string   "name"
-    t.string   "product_name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "leads", :force => true do |t|
+  create_table "affiliates", :force => true do |t|
     t.string   "name"
     t.string   "phone"
     t.string   "address"
-    t.decimal  "total"
-    t.decimal  "success"
-    t.integer  "company_id"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "leads", ["company_id"], :name => "index_leads_on_company_id"
+  create_table "lead_sales", :force => true do |t|
+    t.decimal  "price"
+    t.integer  "student_id"
+    t.integer  "affiliate_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "lead_sales", ["affiliate_id"], :name => "index_lead_sales_on_affiliate_id"
+  add_index "lead_sales", ["student_id"], :name => "index_lead_sales_on_student_id"
+
+  create_table "leads", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.boolean  "opt_in"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.integer  "age_range"
+    t.string   "sex"
+    t.string   "nationality"
+    t.integer  "psycho_demographic"
+    t.boolean  "employed"
+    t.boolean  "student"
+    t.integer  "education_level"
+    t.integer  "education_aos"
+    t.integer  "income_level"
+    t.string   "enrollment"
+    t.string   "page_pass"
+    t.string   "page_ver"
+    t.integer  "lead_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "students", ["lead_id"], :name => "index_students_on_lead_id"
 
 end

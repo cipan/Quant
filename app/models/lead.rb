@@ -1,34 +1,18 @@
 class Lead < ActiveRecord::Base
 	set_primary_key :id
 	set_table_name "Leads"
-	belongs_to :company
-	has_many :clients
+	has_one :student
+
+attr_accessible  :first_name, :last_name, :phone, :address, :city, :state, :zip, :opt_in
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :phone, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip, presence: true
+  validates :opt_in, presence: true
 
 
-
-	attr_accessible :name, :phone, :address, :total, :success, :company_id
-	# ,:company_id
-	# accepts_nested_attributes_for :company
-
-validates :name, presence: true
-validates :phone, presence: true
-validates :address, presence: true
-validates :total, presence: true
-validates :success, presence: true
-# validates :company_id, presence: true
-
-# def initialize(attributes = {})
-#     @name  = attributes[:name]
-#     @phone  = attributes[:phone]
-#     @address  = attributes[:address]
-#     @total  = attributes[:total]
-#     @success = attributes[:success]
-#   end
-
-# def new_company (company)
-# 	joins(company)
-# end
-
-# def delete_company! (company)
-# 	Lead.
- end
+end
