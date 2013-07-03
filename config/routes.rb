@@ -6,6 +6,8 @@ Quant::Application.routes.draw do
   
   match "affiliate/:affiliate/table" => "affiliate#table"
 
+  match "affiliate/:affiliate/graph" => "lead#graph"
+
   # match "company/:company/table" => "company#table"
 
   # The priority is based upon order of creation:

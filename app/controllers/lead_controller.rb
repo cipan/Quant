@@ -11,10 +11,30 @@ class LeadController < ApplicationController
         @data_table.set_cell( t , 0, t)
       end
 
+      aff_students = []
+      if params[:affiliate] != nil
+        lead_sales = LeadSale.where(:affiliate_id => params[:affiliate]).all
+        lead_sales.each do |sale|
+          aff_students << sale.student
+        end
+      end 
+
+
       5.times do |t|
         @data_table.new_column('number', "Phycho-demographic #{t+1}")
         lead_total = Array.new(48, 0)
-        students = Student.find_all_by_psycho_demographic(t+1)
+
+        if params[:affiliate] == nil
+          students = Student.find_all_by_psycho_demographic(t+1)
+        else 
+          students = []
+          aff_students.each do |student|
+            if student.psycho_demographic == t+1
+              students << student
+            end
+          end
+        end
+        
         students.each do |student|
           lead_total = [student.enroll_a, lead_total].transpose.map {|x|(x.reduce(:+).to_f)}
         end
