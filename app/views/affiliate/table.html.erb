@@ -1,7 +1,9 @@
+<!-- Content div & id important to charting formating, including searching and ordering. -->
 <%= content_tag :div, "", id: "orders_chart"%>
 <table id="leads">
 	<thead>
 	  <tr>
+	  	<!-- Creates the columns for the lead display table for an affiliate's purchased leads -->
 	    <th>#</th>
 	    <th>First Name</th>
 	    <th>Last Name</th>
@@ -14,6 +16,7 @@
 	  </tr>
 	</thead>
 	<tbody>
+	<!-- Itterates of the leads for the affiliate passed in setting the tables values. -->
 	  <% @affiliate.lead_sales.all.each do |sale| %>
 	  <% lead = sale.student.lead %>
 	    <tr>
